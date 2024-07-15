@@ -1,15 +1,24 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import MicroModal from "micromodal";
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
+
+document.addEventListener('DOMContentLoaded', () => {
+    MicroModal.init()
+})
 
 let span = document.getElementById("span")
 let h1 = document.getElementById("h1")
 let p = document.getElementById("p")
 
 let zone = dayjs.tz.guess()
+
+function changeTimezone(timezone) {
+    zone = timezone
+}
 
 function updateTime() {
     const today = dayjs().tz(zone)
@@ -38,3 +47,5 @@ function updateTime() {
 updateTime()
 
 setInterval(updateTime, 1000)
+
+window.changeTimezone = changeTimezone

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../micromodal.css">
     <script src="https://kit.fontawesome.com/6bc7e41cfc.js" crossorigin="anonymous"></script>
     <script src="../dist/main.js" defer></script>
 </head>
@@ -14,12 +15,36 @@
     <div class="container">
         <div class="time-box">
             <div class="time">
-                <span id="span"></span>
+                <span id="span" data-micromodal-trigger="modal-1"></span>
                 <h1 id="h1"></h1>
                 <p id="p"></p>
             </div>
         </div>
     </div>
+
+    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+          <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+            <header class="modal__header">
+              <h2 class="modal__title" id="modal-1-title">
+                Select Timezone
+              </h2>
+              <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+            </header>
+            <main class="modal__content" id="modal-1-content">
+              <select id="timezones" onchange="changeTimezone(event.target.value)">
+                <option value="Europe/Istanbul">Europe/Istanbul</option>
+                <option value="Europe/Berlin">Europe/Berlin</option>
+                <option value="America/Toronto">America/Toronto</option>
+                <option value="America/Chicago">America/Chicago</option>
+                <option value="America/New_York">America/New_York</option>
+                <option value="Asia/Istanbul">Asia/Istanbul</option>
+                <option value="Asia/Tokyo">Asia/Tokyo</option>
+              </select>
+            </main>
+          </div>
+        </div>
+      </div>
 </body>
 
 </html>
